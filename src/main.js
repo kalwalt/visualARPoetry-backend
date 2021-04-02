@@ -2,7 +2,8 @@ var gm = require('gm')
 , fs = require('fs')
 , dateFormat = require("dateformat")
 , now = new Date()
-, dir = __dirname + '/imgs';
+, dir = __dirname + '/imgs'
+, book = require('./poems/poems.json');
  
 // transform the image
 function make(url) {
@@ -15,7 +16,7 @@ function make(url) {
     .fontSize(120)
     .stroke("#efe", 2)
     .fill("#888")
-    .drawText(width/2, height/2, "Visual Poetry")
+    .drawText(width/2, height/2, book.poems[0].title)
     .write(dir + '/visual_poetry.jpg', function (err) {
       if (!err) console.log('Image saved!\n');
     });
