@@ -1,0 +1,14 @@
+{
+  "name": "visual-ar-poetry",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "",
+    "build": "node src/main.js"
+  },
+  "dependencies": {
+    "glitch-canvas": "^1.1.8",
+    "gm": "^1.23.1"
+  },
+  "devDependencies": {}
+}
