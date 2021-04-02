@@ -1,4 +1,7 @@
 var gm = require('gm')
+, fs = require('fs')
+, dateFormat = require("dateformat")
+, now = new Date()
 , dir = __dirname + '/imgs';
  
 // transform the image
@@ -13,9 +16,24 @@ function make(url) {
     .stroke("#efe", 2)
     .fill("#888")
     .drawText(width/2, height/2, "Visual Poetry")
-    .write(dir + '/visual_poetry.png', function (err) {
+    .write(dir + '/visual_poetry.jpg', function (err) {
       if (!err) console.log('Image saved!\n');
     });
+}
+
+function saveInc(url) {
+  gm(dir + url)
+  .resize(220, 220)
+  .blur(10, 6)
+  .toBuffer('JPG', function(err, buff) {
+    if (err) return console.dir(arguments)
+    fs.writeFileSync(dir + '/visual_poetry_' + getDate() + '.jpg', buff)
+    console.log('done!');
+  })
+}
+
+function getDate() {
+  return dateFormat(now, "isoDateTime");
 }
 
 // from https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -39,6 +57,9 @@ gm.prototype.drawRectangles = function(num, width, height) {
    return this;
 }
 
+console.log(getDate())
+
 make('/fishes.jpg')
+saveInc('/fishes.jpg')
 
 console.log('Done!\n')
