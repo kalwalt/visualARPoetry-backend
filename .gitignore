@@ -24,3 +24,4 @@ pnpm-debug.log*
 
 # other files to exclude
 .cache
+src/imgs/visual_poetry_*.jpg
