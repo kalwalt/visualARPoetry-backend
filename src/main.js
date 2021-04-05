@@ -1,10 +1,10 @@
-var gm = require('gm')
+const gm = require('gm')
 , fs = require('fs')
 , glitch = require('glitch-canvas')
 , dateFormat = require("dateformat")
 , now = new Date()
 , dir = __dirname + '/imgs'
-, book = require('./poems/poems.json');
+, reader = require('./loadJson');
 
 var glitchParams = {
   seed:       55,
@@ -14,7 +14,7 @@ var glitchParams = {
 }
  
 // This function draw some geometries and text (poems), glitch the result and save it incrementally with a date.
-function make(url) {
+function make(url, book) {
     var width, height;
     width = 2200;
     height = 1650;
@@ -24,8 +24,7 @@ function make(url) {
     .fontSize(120)
     .stroke("#efe", 2)
     .fill("#888")
-    //.drawText(width/2, height/2, book.poems[0].title)
-    .drawPoem(width, height)
+    .drawPoem(width, height, book)
     .toBuffer('JPG', function(err, buff) {
       if (err) return console.dir(arguments)
       glitch(glitchParams)
@@ -43,7 +42,7 @@ function make(url) {
   })
 }
 
-// This function only apply a Blur and glitch the image. Then the image is saved with a date.
+// This function only apply a Blur and glitch the image. Then the image is saved with a date. Used only for testing.
 function saveInc(url) {
   gm(dir + url)
   .resize(220, 220)
@@ -90,7 +89,7 @@ gm.prototype.drawRectangles = function(num, width, height) {
    return this;
 }
 
-gm.prototype.drawPoem = function(width, height) {
+gm.prototype.drawPoem = function(width, height, book) {
   this.fontSize(120)
   this.stroke("#efe", 2)
   this.fill("#888")
@@ -106,8 +105,8 @@ gm.prototype.drawPoem = function(width, height) {
 
 console.log(getDate())
 
-make('/fishes.jpg')
-// Use saveInc() only for testing !!
-//saveInc('/fishes.jpg')
+reader.readWithCallback('./poems/poems.json',(obj) => {
+  make('/fishes.jpg', obj)
+})
 
 console.log('Done!\n')
