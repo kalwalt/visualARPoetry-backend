@@ -1,10 +1,9 @@
 const gm = require('gm')
 , fs = require('fs')
 , glitch = require('glitch-canvas')
-, dateFormat = require("dateformat")
-, now = new Date()
+, utils = require('./modules/utils')
 , dir = __dirname + '/imgs'
-, reader = require('./loadJson');
+, reader = require('./modules/loadJson');
 
 var glitchParams = {
   seed:       55,
@@ -31,11 +30,11 @@ function make(url, book) {
       .fromBuffer(buff)
       .toBuffer()
       .then( function( imageBuffer ) {
-        fs.writeFile( dir + '/visual_poetry_' + getDate() + '.jpg', imageBuffer, function ( err ) {
+        fs.writeFile( dir + '/visual_poetry_' + utils.getDate() + '.jpg', imageBuffer, function ( err ) {
           if ( err ) {
             throw err;
           } else {
-            console.log( 'fromBufferToPng complete. File saved to', dir + '/visual_poetry_' + getDate() + '.jpg' );
+            console.log( 'fromBufferToPng complete. File saved to', dir + '/visual_poetry_' + utils.getDate() + '.jpg' );
           }
       })
     })
@@ -53,37 +52,26 @@ function saveInc(url) {
     .fromBuffer(buff)
     .toBuffer()
     .then( function( imageBuffer ) {
-      fs.writeFile( dir + '/visual_poetry_' + getDate() + '.jpg', imageBuffer, function ( err ) {
+      fs.writeFile( dir + '/visual_poetry_' + utils.getDate() + '.jpg', imageBuffer, function ( err ) {
         if ( err ) {
           throw err;
         } else {
-          console.log( 'fromBufferToPng complete. File saved to', dir + '/visual_poetry_' + getDate() + '.jpg' );
+          console.log( 'fromBufferToPng complete. File saved to', dir + '/visual_poetry_' + utils.getDate() + '.jpg' );
         }
     })
   })
 })
 }
 
-function getDate() {
-  return dateFormat(now, "isoDateTime");
-}
-
-// from https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
 gm.prototype.drawRectangles = function(num, width, height) {
     for (var i=0; i < num; i++) {
         this.stroke("yellow", 7)
         this.fill("#ffffffbb")
         this.drawRectangle(
-            getRandomIntInclusive(10, width/2), 
-            getRandomIntInclusive(10, height/2), 
-            getRandomIntInclusive(width/2, width-10), 
-            getRandomIntInclusive(height/2, height-10)
+            utils.getRandomIntInclusive(10, width/2), 
+            utils.getRandomIntInclusive(10, height/2), 
+            utils.getRandomIntInclusive(width/2, width-10), 
+            utils.getRandomIntInclusive(height/2, height-10)
         )
     }
    return this;
@@ -98,12 +86,12 @@ gm.prototype.drawPoem = function(width, height, book) {
   this.stroke("#efe", 2)
   this.fill("#886")
   for (var i=0; i<3; i++){
-    this.drawText(getRandomIntInclusive(10, width-10), getRandomIntInclusive(10, height-10), book.poems[0].text[i])
+    this.drawText(utils.getRandomIntInclusive(10, width-10), utils.getRandomIntInclusive(10, height-10), book.poems[0].text[i])
   }
   return this;
 }
 
-console.log(getDate())
+console.log(utils.getDate())
 
 reader.readWithCallback('./poems/poems.json',(obj) => {
   make('/fishes.jpg', obj)
