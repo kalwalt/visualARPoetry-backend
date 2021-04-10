@@ -1,9 +1,9 @@
-const gm = require('gm')
-, fs = require('fs')
+const fs = require('fs')
 , glitch = require('glitch-canvas')
 , utils = require('./modules/utils')
 , dir = __dirname + '/imgs'
-, reader = require('./modules/loadJson');
+, reader = require('./modules/loadJson')
+, gm = require('./modules/graphics');
 
 var glitchParams = {
   seed:       55,
@@ -62,25 +62,6 @@ function saveInc(url) {
   })
 })
 }
-
-gm.prototype.drawRectangles = function(num, width, height) {
-    for (var i=0; i < num; i++) {
-        this.stroke("yellow", 7)
-        this.fill("#ffffffbb")
-        this.drawRect(
-            utils.getRandomIntInclusive(10, width-10), 
-            utils.getRandomIntInclusive(10, height-10), 
-            utils.getRandomIntInclusive(10, width), 
-            utils.getRandomIntInclusive(10, height)
-        )
-    }
-   return this;
-}
-
-gm.prototype.drawRect = function(x, y, width, height) {
-  this.drawRectangle(x, y, x + width, y + height);
-}
-
 gm.prototype.drawPoem = function(width, height, book) {
   this.fontSize(120)
   this.stroke("#efe", 2)
@@ -100,5 +81,12 @@ console.log(utils.getDate())
 reader.readWithCallback(__dirname + '/poems/poems.json',(obj) => {
  make('/fishes.jpg', obj)
 })
+
+// testing drawRectangles alone
+gm(dir + '/fishes.jpg')
+.drawRectangles(10,2200,1650)
+.write(dir + '/draw_test.jpg', function (err) {
+  if (!err) console.log('done');
+});
 
 console.log('Done!\n')
