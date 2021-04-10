@@ -83,10 +83,16 @@ reader.readWithCallback(__dirname + '/poems/poems.json',(obj) => {
 })
 
 // testing drawRectangles alone
+var w, h;
 gm(dir + '/fishes.jpg')
-.drawRectangles(10,2200,1650)
-.write(dir + '/draw_test.jpg', function (err) {
+.size(function(err, val) {
+w = val.width;
+h = val.height;
+this.drawRectangles(10, w, h)
+if (!err) console.log('rects ok');
+this.write(dir + '/draw_test.jpg', function (err) {
   if (!err) console.log('done');
 });
+})
 
 console.log('Done!\n')
