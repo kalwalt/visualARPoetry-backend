@@ -19,6 +19,7 @@ function make(url, book) {
     height = 1650;
     gm(dir + url)
     .blur(8, 4)
+    .drawCircles(10, "red", 2, "#ddffbbbb", width, height, 60)
     .drawRectangles(4, "yellow", 7, "#ffffffbb", width, height)
     .fontSize(120)
     .stroke("#efe", 2)
@@ -78,7 +79,7 @@ h = val.height;
 this.fill('green')
 this.stroke("#880", 4)
 this.drawCircleWithRadius(220, 220, 50)
-this.drawCircles(10, "red", 2, "#ddffbb", w, h, 60)
+this.drawCircles(10, "red", 2, "#ddffbbbb", w, h, 60)
 this.drawRectangles(10, "red", 2, "#ffffffbb", w, h)
 if (!err) console.log('rects ok');
 this.write(dir + '/draw_test.jpg', function (err) {

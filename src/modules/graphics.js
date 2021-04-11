@@ -33,6 +33,7 @@ gm.prototype.drawCircles = function(numCircles, strokeColor, strokeSize, fillCol
             utils.getRandomIntInclusive(0, radius)
         )
     }
+    return this;
 }
 
 gm.prototype.drawPoem = function(width, height, book, fontSizeTitle, strokeTitle, fillTitle, fontSizeText, strokeText, fillText) {
