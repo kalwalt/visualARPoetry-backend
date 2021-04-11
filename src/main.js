@@ -23,7 +23,7 @@ function make(url, book) {
     .fontSize(120)
     .stroke("#efe", 2)
     .fill("#888")
-    .drawPoem(width, height, book)
+    .drawPoem(w, h, book, 120, "#efe", "#888", 120, "#efe", "#886")
     .toBuffer('JPG', function(err, buff) {
       if (err) return console.dir(arguments)
       glitch(glitchParams)
@@ -61,19 +61,6 @@ function saveInc(url) {
     })
   })
 })
-}
-gm.prototype.drawPoem = function(width, height, book) {
-  this.fontSize(120)
-  this.stroke("#efe", 2)
-  this.fill("#888")
-  this.drawText(width/2, height/2, book.poems[0].title)
-  this.fontSize(100)
-  this.stroke("#efe", 2)
-  this.fill("#886")
-  for (var i=0; i<3; i++){
-    this.drawText(utils.getRandomIntInclusive(10, width-10), utils.getRandomIntInclusive(10, height-10), book.poems[0].text[i])
-  }
-  return this;
 }
 
 console.log(utils.getDate())
