@@ -9,7 +9,8 @@
   "dependencies": {
     "dateformat": "^4.5.1",
     "glitch-canvas": "^1.1.8",
-    "gm": "^1.23.1"
+    "gm": "^1.23.1",
+    "simplex-noise": "^2.4.0"
   },
   "devDependencies": {}
 }
