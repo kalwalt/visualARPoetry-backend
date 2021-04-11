@@ -12,6 +12,12 @@ const getRandomIntInclusive = function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+const convertToInt = function(value, min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(value * (max - min + 1)) + min;
+}
+
 module.exports = {
-    getDate, getRandomIntInclusive
+    convertToInt, getDate, getRandomIntInclusive
 }
