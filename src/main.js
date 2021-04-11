@@ -19,7 +19,7 @@ function make(url, book) {
     height = 1650;
     gm(dir + url)
     .blur(8, 4)
-    .drawRectangles(4, width, height)
+    .drawRectangles(4, "yellow", 7, "#ffffffbb", width, height)
     .fontSize(120)
     .stroke("#efe", 2)
     .fill("#888")
@@ -88,7 +88,7 @@ gm(dir + '/fishes.jpg')
 .size(function(err, val) {
 w = val.width;
 h = val.height;
-this.drawRectangles(10, w, h)
+this.drawRectangles(10, "red", 2, "#ffffffbb", w, h)
 if (!err) console.log('rects ok');
 this.write(dir + '/draw_test.jpg', function (err) {
   if (!err) console.log('done');

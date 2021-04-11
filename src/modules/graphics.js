@@ -1,10 +1,10 @@
 const gm = require('gm')
 const utils = require('./utils')
 
-gm.prototype.drawRectangles = function(num, width, height) {
+gm.prototype.drawRectangles = function(num, color, strokeSize, fillColor, width, height) {
     for (var i=0; i < num; i++) {
-        this.stroke("yellow", 7)
-        this.fill("#ffffffbb")
+        this.stroke(color, strokeSize)
+        this.fill(fillColor)
         this.drawRect(
             utils.getRandomIntInclusive(10, width-10), 
             utils.getRandomIntInclusive(10, height-10), 
