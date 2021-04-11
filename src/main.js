@@ -78,6 +78,7 @@ h = val.height;
 this.fill('green')
 this.stroke("#880", 4)
 this.drawCircleWithRadius(220, 220, 50)
+this.drawCircles(10, "red", 2, "#ddffbb", w, h, 60)
 this.drawRectangles(10, "red", 2, "#ffffffbb", w, h)
 if (!err) console.log('rects ok');
 this.write(dir + '/draw_test.jpg', function (err) {
