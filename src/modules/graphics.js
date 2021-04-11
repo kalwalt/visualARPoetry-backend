@@ -1,9 +1,9 @@
 const gm = require('gm')
 const utils = require('./utils')
 
-gm.prototype.drawRectangles = function(num, color, strokeSize, fillColor, width, height) {
+gm.prototype.drawRectangles = function(num, strokeColor, strokeSize, fillColor, width, height) {
     for (var i=0; i < num; i++) {
-        this.stroke(color, strokeSize)
+        this.stroke(strokeColor, strokeSize)
         this.fill(fillColor)
         this.drawRect(
             utils.getRandomIntInclusive(10, width-10), 
@@ -21,6 +21,18 @@ gm.prototype.drawRect = function(x, y, width, height) {
 
 gm.prototype.drawCircleWithRadius = function(x, y, radius) {
     this.drawCircle(x, y, x + radius, y + radius);
+}
+
+gm.prototype.drawCircles = function(numCircles, strokeColor, strokeSize, fillColor, width, height, radius) {
+    for (var i = 0; i < numCircles; i++) {
+        this.stroke(strokeColor, strokeSize)
+        this.fill(fillColor)
+        this.drawCircleWithRadius(
+            utils.getRandomIntInclusive(10, width-10), 
+            utils.getRandomIntInclusive(10, height-10),
+            utils.getRandomIntInclusive(0, radius)
+        )
+    }
 }
 
 gm.prototype.drawPoem = function(width, height, book, fontSizeTitle, strokeTitle, fillTitle, fontSizeText, strokeText, fillText) {
