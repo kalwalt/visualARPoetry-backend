@@ -1,5 +1,7 @@
 const gm = require('gm')
 const utils = require('./utils')
+const SimplexNoise = require('simplex-noise')
+simplex = new SimplexNoise(Math.random),
 
 gm.prototype.drawRectangles = function(num, strokeColor, strokeSize, fillColor, width, height) {
     for (var i=0; i < num; i++) {
@@ -46,6 +48,17 @@ gm.prototype.drawPoem = function(width, height, book, fontSizeTitle, strokeTitle
     this.fill(fillText)
     for (var i=0; i<3; i++){
       this.drawText(utils.getRandomIntInclusive(10, width-10), utils.getRandomIntInclusive(10, height-10), book.poems[0].text[i])
+    }
+    return this;
+}   
+
+gm.prototype.addNoisyLines = function(numlines) {
+    for(var i = 0; i < numlines; i++) {
+        for(var j = 0; j < numlines; j++) {
+            x = simplex.noise2D(i, j);
+            y = simplex.noise2D(i, j);;
+            this.drawLine(utils.convertToInt(x, 0, 120) + i, utils.convertToInt(y, 0, 120) + j, utils.convertToInt(x, 0, 120) - i, utils.convertToInt(y, 0, 120) - j)
+        }
     }
     return this;
 }
