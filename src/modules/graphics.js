@@ -19,6 +19,10 @@ gm.prototype.drawRect = function(x, y, width, height) {
   this.drawRectangle(x, y, x + width, y + height);
 }
 
+gm.prototype.drawCircleWithRadius = function(x, y, radius) {
+    this.drawCircle(x, y, x + radius, y + radius);
+}
+
 gm.prototype.drawPoem = function(width, height, book, fontSizeTitle, strokeTitle, fillTitle, fontSizeText, strokeText, fillText) {
     this.fontSize(fontSizeTitle)
     this.stroke(strokeTitle, 2)
@@ -31,6 +35,6 @@ gm.prototype.drawPoem = function(width, height, book, fontSizeTitle, strokeTitle
       this.drawText(utils.getRandomIntInclusive(10, width-10), utils.getRandomIntInclusive(10, height-10), book.poems[0].text[i])
     }
     return this;
-  }
+}
 
 module.exports = gm
