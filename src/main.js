@@ -46,7 +46,7 @@ function make(url, book, glitchParams) {
   })
 }
 
-// This function only apply a Blur and glitch the image. Then the image is saved with a date. Used only for testing.
+// This function only apply a blur effect and glitch the image. Then the image is saved with a date. Used only for testing.
 function saveInc(url) {
   gm(dir + url)
   .resize(220, 220)
@@ -77,7 +77,7 @@ reader.readWithCallback(__dirname + '/poems/poems.json',(obj) => {
   make('/fishes.jpg', obj, glitchParams)
 })
 
-// testing drawRectangles and othe graphics stuff. Used only for testing.
+// testing drawRectangles and the graphics stuff. Used only for testing.
 var w, h;
 gm(dir + '/fishes.jpg')
 .size(function(err, val) {
