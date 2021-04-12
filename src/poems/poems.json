@@ -1,7 +1,5 @@
 {
-    "poems": 
-    [
-        {
+    "poems": [{
             "id": 1,
             "title": "A lake with fishes",
             "text": [
@@ -17,7 +15,7 @@
             "text": [
                 "In the lake they fall",
                 "a dragonfly alights",
-                "forever awaiting"        
+                "forever awaiting"
             ]
         },
         {
@@ -26,7 +24,7 @@
             "text": [
                 "the wave never remain",
                 "the bees fly over",
-                "remaining on the shore"        
+                "remaining on the shore"
             ]
         }
     ]
