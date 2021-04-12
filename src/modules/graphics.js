@@ -40,7 +40,6 @@ gm.prototype.drawCircles = function(numCircles, strokeColor, strokeSize, fillCol
 
 gm.prototype.drawPoem = function(width, height, book, fontSizeTitle, strokeTitle, fillTitle, fontSizeText, strokeText, fillText) {
     var numPoem = utils.getRandomIntInclusive(0, 2)
-    console.log(numPoem);
     this.fontSize(fontSizeTitle)
     this.stroke(strokeTitle, 2)
     this.fill(fillTitle)
