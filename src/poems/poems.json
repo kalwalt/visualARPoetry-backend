@@ -5,10 +5,28 @@
             "id": 1,
             "title": "A lake with fishes",
             "text": [
-                " Leaves, ",
+                "Leaves, ",
                 "don't forget me",
                 "i will ever be",
                 "in this piece of sky"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Slow falling leaves",
+            "text": [
+                "In the lake they fall",
+                "a dragonfly alights",
+                "forever awaiting"        
+            ]
+        },
+        {
+            "id": 3,
+            "title": "The cloud",
+            "text": [
+                "the wave never remain",
+                "the bees fly over",
+                "remaining on the shore"        
             ]
         }
     ]
