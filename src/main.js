@@ -21,6 +21,7 @@ var glitchParams = {
 // This function draw some geometries and text (poems), glitch the result and save it incrementally with a date.
 function make(url, book, glitchParams) {
     var width, height;
+    var outName = '/visual_poetry_' + utils.getDate() + '.jpg';
     gm(dir + url)
     .size(function(err, val) {
       width = val.width;
@@ -38,7 +39,7 @@ function make(url, book, glitchParams) {
           gm(imageBuffer)
           .drawPoem(w, h, book, 120, "#efe", "#888", 120, "#efe", "#886")
           .quality(84)
-          .write(dir + '/visual_poetry_' + utils.getDate() + '.jpg', function (err) {
+          .write(dir + outName, function (err) {
             if (!err) console.log('Image saved');
         })
       })
