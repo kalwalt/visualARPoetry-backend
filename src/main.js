@@ -5,15 +5,21 @@ const fs = require('fs')
 , reader = require('./modules/loadJson')
 , gm = require('./modules/graphics');
 
+var seed, quality, amount, iterations;
+seed = 55;
+quality = 60;
+amount = 12;
+iterations = 5;
+
 var glitchParams = {
-  seed:       55,
-	quality:    60,
-	amount:     12,
-	iterations: 5
+  seed:       seed,
+	quality:    quality,
+	amount:     amount,
+	iterations: iterations
 }
  
 // This function draw some geometries and text (poems), glitch the result and save it incrementally with a date.
-function make(url, book) {
+function make(url, book, glitchParams) {
     var width, height;
     gm(dir + url)
     .size(function(err, val) {
@@ -31,6 +37,7 @@ function make(url, book) {
         .then( function( imageBuffer ) {
           gm(imageBuffer)
           .drawPoem(w, h, book, 120, "#efe", "#888", 120, "#efe", "#886")
+          .quality(84)
           .write(dir + '/visual_poetry_' + utils.getDate() + '.jpg', function (err) {
             if (!err) console.log('Image saved');
         })
@@ -64,7 +71,10 @@ function saveInc(url) {
 console.log(utils.getDate())
 
 reader.readWithCallback(__dirname + '/poems/poems.json',(obj) => {
-  make('/fishes.jpg', obj)
+  glitchParams.seed = utils.getRandomIntInclusive(0, 99)
+  glitchParams.quality = utils.getRandomIntInclusive(0, 99)
+  glitchParams.amount = utils.getRandomIntInclusive(0, 99)
+  make('/fishes.jpg', obj, glitchParams)
 })
 
 // testing drawRectangles and othe graphics stuff. Used only for testing.
