@@ -52,12 +52,14 @@ gm.prototype.drawPoem = function(width, height, book, fontSizeTitle, strokeTitle
     return this;
 }   
 
-gm.prototype.addNoisyLines = function(numlines) {
+gm.prototype.addNoisyLines = function(numlines, width, height) {
     for(var i = 0; i < numlines; i++) {
         for(var j = 0; j < numlines; j++) {
             x = simplex.noise2D(i, j);
-            y = simplex.noise2D(i, j);;
-            this.drawLine(utils.convertToInt(x, 0, 120) + i, utils.convertToInt(y, 0, 120) + j, utils.convertToInt(x, 0, 120) - i, utils.convertToInt(y, 0, 120) - j)
+            y = simplex.noise2D(i, j);
+            r = utils.convertToInt(x, 0, 255);
+            this.stroke('rgb(' + r + ', 20, 120)', 3);
+            this.drawLine(utils.convertToInt(x, 0, width/2), utils.convertToInt(y, 0, height/2), utils.convertToInt(x, 0, width), utils.convertToInt(y, 0, height))
         }
     }
     return this;
