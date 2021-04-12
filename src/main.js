@@ -19,24 +19,19 @@ function make(url, book) {
     height = 1650;
     gm(dir + url)
     .blur(8, 4)
+    .addNoisyLines(20, 6, width, height, 880)
     .drawCircles(10, "red", 2, "#ddffbbbb", width, height, 60)
     .drawRectangles(4, "yellow", 7, "#ffffffbb", width, height)
-    .fontSize(120)
-    .stroke("#efe", 2)
-    .fill("#888")
-    .drawPoem(w, h, book, 120, "#efe", "#888", 120, "#efe", "#886")
     .toBuffer('JPG', function(err, buff) {
       if (err) return console.dir(arguments)
       glitch(glitchParams)
       .fromBuffer(buff)
       .toBuffer()
       .then( function( imageBuffer ) {
-        fs.writeFile( dir + '/visual_poetry_' + utils.getDate() + '.jpg', imageBuffer, function ( err ) {
-          if ( err ) {
-            throw err;
-          } else {
-            console.log( 'fromBufferToPng complete. File saved to', dir + '/visual_poetry_' + utils.getDate() + '.jpg' );
-          }
+        gm(imageBuffer)
+        .drawPoem(w, h, book, 120, "#efe", "#888", 120, "#efe", "#886")
+      .write(dir + '/visual_poetry_' + utils.getDate() + '.jpg', function (err) {
+        if (!err) console.log('done');
       })
     })
   })
