@@ -60,5 +60,5 @@ function simpleTest(url) {
     })
 }
 
-simpleTest('/fishes.jpg')
+//simpleTest('/fishes.jpg')
 saveInc('/fishes.jpg', glitchParams)
