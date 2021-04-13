@@ -38,6 +38,19 @@ function saveInc(url, glitchParams) {
   })
 })
 }
+function simpleGm() {
+    gm(560, 110, "#00ff55aa")
+    .fontSize(68)
+    .stroke("#efe", 2)
+    .fill("#555")
+    .drawText(20, 72, "Visual")
+    .fill("#fa0")
+    .drawText(232, 72, "AR Poetry")
+    .write(dir + '/test.jpg', function(err){
+        if (err) return console.dir(arguments)
+        console.log(this.outname + ' created  :: ' + arguments[3])
+    }) 
+}
 
 // testing drawRectangles and the graphics stuff. Used only for testing.
 function simpleTest(url) {
@@ -61,4 +74,5 @@ function simpleTest(url) {
 }
 
 //simpleTest('/fishes.jpg')
-saveInc('/fishes.jpg', glitchParams)
+//saveInc('/fishes.jpg', glitchParams)
+simpleGm()
