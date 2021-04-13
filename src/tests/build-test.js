@@ -1,0 +1,79 @@
+const gm = require('./../modules/graphics')
+, utils = require('./../modules/utils')
+, glitch = require('glitch-canvas')
+, dir = __dirname + '/../imgs'
+, fs = require('fs')
+
+var seed, quality, amount, iterations;
+seed = 55;
+quality = 60;
+amount = 12;
+iterations = 5;
+
+var glitchParams = {
+  seed:       seed,
+	quality:    quality,
+	amount:     amount,
+	iterations: iterations
+}
+
+// This function only apply a blur effect and glitch the image. Then the image is saved with a date. Used only for testing.
+function saveInc(url, glitchParams) {
+  gm(dir + url)
+  .resize(220, 220)
+  .blur(10, 6)
+  .toBuffer('JPG', function(err, buff) {
+    if (err) return console.dir(arguments)
+    glitch(glitchParams)
+    .fromBuffer(buff)
+    .toBuffer()
+    .then( function( imageBuffer ) {
+      fs.writeFile( dir + '/visual_poetry_' + utils.getDate() + '.jpg', imageBuffer, function ( err ) {
+        if ( err ) {
+          throw err;
+        } else {
+          console.log( 'fromBufferToPng complete. File saved to', dir + '/visual_poetry_' + utils.getDate() + '.jpg' );
+        }
+    })
+  })
+})
+}
+function simpleGm() {
+    gm(560, 110, "#00ff55aa")
+    .fontSize(68)
+    .stroke("#efe", 2)
+    .fill("#555")
+    .drawText(20, 72, "Visual")
+    .fill("#fa0")
+    .drawText(232, 72, "AR Poetry")
+    .write(dir + '/test.jpg', function(err){
+        if (err) return console.dir(arguments)
+        console.log(this.outname + ' created  :: ' + arguments[3])
+    }) 
+}
+
+// testing drawRectangles and the graphics stuff. Used only for testing.
+function simpleTest(url) {
+    var w, h;
+    gm(dir + url)
+    .size(function(err, val) {
+        w = val.width;
+        h = val.height;
+        this.fill('green')
+        this.stroke("#880", 4)
+        this.drawCircleWithRadius(220, 220, 50)
+        this.drawCircles(10, "red", 2, "#ddffbbbb", w, h, 60)
+        this.drawRectangles(10, "red", 2, "#ffffffbb", w, h)
+        this.addNoisyLines(20, 6, w, h, 880)
+        if (!err) console.log('rects ok');
+        this.quality(84)
+        this.write(dir + '/draw_test.jpg', function (err) {
+            if (!err) console.log('done');
+        });
+    })
+}
+
+// simpleTest and saveInc need to be fixed. They partially fails in github actions, see PR https://github.com/kalwalt/visualARPoetry-backend/pull/4
+// simpleTest('/fishes.jpg')
+// saveInc('/fishes.jpg', glitchParams)
+simpleGm()

@@ -1,4 +1,5 @@
 const loadJ = require('../modules/loadJson')
+, utils = require('../modules/utils')
 
 test("test Json id", done => {
     loadJ.readWithCallback(__dirname + '/../poems/poems.json', (obj) => {
@@ -42,4 +43,19 @@ test("test Json text poem id 3", done => {
             done(error);
         }
     })
+})
+
+test("test utils getDate is not undefined", done => {
+    expect(utils.getDate()).not.toBeUndefined();
+    done();
+})
+
+test("test utils getRandomIntInclusive return int number >= 0", done => {
+    expect(utils.getRandomIntInclusive(0, 10)).toBeGreaterThanOrEqual(0);
+    done();
+})
+
+test("test utils convertToInt return int number", done => {
+    expect(utils.convertToInt(0.02, 0, 100)).toBe(2);
+    done();
 })
