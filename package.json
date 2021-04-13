@@ -1,10 +1,10 @@
 {
   "name": "visual-ar-poetry-backend",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "test": "jest",
-    "build": "node src/main.js"
+    "build": "node src/main.js",
+    "build-test": "node src/tests/build-test.js"
   },
   "dependencies": {
     "dateformat": "^4.5.1",
