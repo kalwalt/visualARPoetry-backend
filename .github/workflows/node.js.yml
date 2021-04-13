@@ -27,6 +27,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         lfs: true
+        path: ${{ github.workspace }}
     - run: sudo apt-get update
     - run: sudo apt-get install graphicsmagick imagemagick
     - run: npm ci
