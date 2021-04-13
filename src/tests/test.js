@@ -1,6 +1,5 @@
 const loadJ = require('../modules/loadJson')
 , utils = require('../modules/utils')
-, gm = require('gm')
 
 test("test Json id", done => {
     loadJ.readWithCallback(__dirname + '/../poems/poems.json', (obj) => {
