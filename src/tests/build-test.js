@@ -38,6 +38,7 @@ function saveInc(url, glitchParams) {
   })
 })
 }
+
 function simpleGm() {
     gm(560, 110, "#00ff55aa")
     .fontSize(68)
