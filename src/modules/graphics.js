@@ -65,6 +65,18 @@ gm.prototype.recursiveLinesX = function(start, lineWidth, startX, spacing, numbe
   }
 }
 
+gm.prototype.recursiveLinesY = function(start, lineWidth, startY, spacing, numberLines) {
+  var r, g, b;
+  var factor = numberLines * spacing
+  for(var y = startY; y <= factor; y += spacing){
+    r = utils.getRandomIntInclusive(0, 255);
+    g = utils.getRandomIntInclusive(0, 255);
+    b = utils.getRandomIntInclusive(0, 255);
+    this.stroke('rgb(' + r + ',' + g + ', 120)', 3);
+    this.drawLine(start, y, start + lineWidth, y);
+  }
+}
+
 gm.prototype.addNoisyLines = function(numLines, spacing, width, height, length) {
     var r, g, st = 0;
     for(var i = 0; i < numLines; i++) {
