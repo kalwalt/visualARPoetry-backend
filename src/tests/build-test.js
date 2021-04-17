@@ -49,7 +49,7 @@ function simpleGm() {
     .write(dir + '/test.jpg', function(err){
         if (err) return console.dir(arguments)
         console.log(this.outname + ' created  :: ' + arguments[3])
-    }) 
+    })
 }
 
 // testing drawRectangles and the graphics stuff. Used only for testing.
@@ -73,7 +73,29 @@ function simpleTest(url) {
     })
 }
 
+function recursiveLinesTest(url) {
+    var w, h;
+    gm(dir+url)
+    .size(function(err, val) {
+        w = val.width;
+        h = val.height;
+        this.fill('green')
+        this.stroke("#880", 4)
+        this.drawCircleWithRadius(220, 220, 50)
+        this.drawCircles(10, "red", 2, "#ddffbbbb", w, h, 60)
+        this.drawRectangles(10, "red", 2, "#ffffffbb", w, h)
+        this.recursiveLinesX(20, 320, 20, 10, 200)
+        if (!err) console.log('rects ok');
+        this.quality(84)
+        this.write(dir + '/rec_lines_test.jpg', function (err) {
+            if (!err) console.log('done');
+        });
+    })
+}
+
+
 // simpleTest and saveInc need to be fixed. They partially fails in github actions, see PR https://github.com/kalwalt/visualARPoetry-backend/pull/4
 // simpleTest('/fishes.jpg')
+recursiveLinesTest('/_fishes.jpg')
 // saveInc('/fishes.jpg', glitchParams)
-simpleGm()
+// simpleGm()
