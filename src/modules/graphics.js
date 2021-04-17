@@ -53,6 +53,15 @@ gm.prototype.drawPoem = function(width, height, book, fontSizeTitle, strokeTitle
     return this;
 }
 
+gm.prototype.randomLines = function() {
+  for( var i = 0; i < 100; i++) {
+    var r = utils.getRandomIntInclusive(0, 100);
+    var offset = r * 5.0;
+    this.stroke('rgb(' + r + ', 120, 120)', 3);
+    this.drawLine(i - 20, 600, i + offset, 0);
+  }
+}
+
 gm.prototype.recursiveLinesX = function(start, lineWidth, startX, spacing, numberLines) {
   var r, g, b;
   var factor = numberLines * spacing

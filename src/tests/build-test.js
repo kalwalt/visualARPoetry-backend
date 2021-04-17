@@ -87,6 +87,7 @@ function recursiveLinesTest(url) {
         this.drawRectangles(10, "red", 2, "#ffffffbb", w, h)
         this.recursiveLinesX(20, 320, 20, 10, 200)
         this.recursiveLinesY(20, 320, 20, 10, 200)
+        this.randomLines()
         if (!err) console.log('rects ok');
         this.quality(84)
         this.write(dir + '/rec_lines_test.jpg', function (err) {
