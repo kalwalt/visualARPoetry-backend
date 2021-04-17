@@ -97,6 +97,6 @@ function recursiveLinesTest(url) {
 
 // simpleTest and saveInc need to be fixed. They partially fails in github actions, see PR https://github.com/kalwalt/visualARPoetry-backend/pull/4
 // simpleTest('/fishes.jpg')
-recursiveLinesTest('/_fishes.jpg')
+recursiveLinesTest('/fishes.jpg')
 // saveInc('/fishes.jpg', glitchParams)
 // simpleGm()
