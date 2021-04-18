@@ -53,12 +53,14 @@ gm.prototype.drawPoem = function(width, height, book, fontSizeTitle, strokeTitle
     return this;
 }
 
-gm.prototype.randomLines = function() {
-  for( var i = 0; i < 100; i++) {
-    var r = utils.getRandomIntInclusive(0, 100);
-    var offset = r * 5.0;
-    this.stroke('rgb(' + r + ', 120, 120)', 3);
-    this.drawLine(i - 20, 600, i + offset, 0);
+gm.prototype.randomLines = function(numberLines, factorX, factorY, inc) {
+  for( var i = 0; i < numberLines; i++) {
+    var rX = utils.getRandomIntInclusive(0, factorX);
+    var rY = utils.getRandomIntInclusive(0, factorY);
+    var offsetX = rX * 5.0;
+    var offsetY = rY * 5.0;
+    this.stroke('rgb(' + rX + ',' + rY + ', 120)', 3);
+    this.drawLine(i + rX + inc, i + rY + inc, i + offsetX + inc , i + offsetY + inc);
   }
 }
 
