@@ -77,7 +77,9 @@ function simpleTest(url) {
 
 function recursiveLinesTest(url) {
     var w, h;
-    var color = new Color(120, 120, 120, 120);
+    var randColor = new Color(120, 120, 120, 120);
+    var colorX = new Color(220, 10, 100, 0);
+    var colorY = new Color(20, 110, 200, 0);
     gm(dir+url)
     .size(function(err, val) {
         w = val.width;
@@ -87,9 +89,9 @@ function recursiveLinesTest(url) {
         this.drawCircleWithRadius(220, 220, 50)
         this.drawCircles(10, "red", 2, "#ddffbbbb", w, h, 60)
         this.drawRectangles(10, "red", 2, "#ffffffbb", w, h)
-        this.recursiveLinesX(20, 320, 20, 10, 200)
-        this.recursiveLinesY(20, 320, 20, 10, 200)
-        this.randomLines(120, 220, 220, 400, color)
+        this.recursiveLinesX(20, 320, 20, 10, 200, colorX, true)
+        this.recursiveLinesY(20, 320, 20, 10, 200, colorY, false)
+        this.randomLines(120, 220, 220, 400, randColor)
         if (!err) console.log('rects ok');
         this.quality(84)
         this.write(dir + '/rec_lines_test.jpg', function (err) {

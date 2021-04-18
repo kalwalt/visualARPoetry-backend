@@ -22,7 +22,7 @@ gm.prototype.drawRect = function(x, y, width, height) {
 }
 
 gm.prototype.drawCircleWithRadius = function(x, y, radius) {
-    this.drawCircle(x, y, x + radius, y + radius);
+  this.drawCircle(x, y, x + radius, y + radius);
 }
 
 gm.prototype.drawCircles = function(numCircles, strokeColor, strokeSize, fillColor, width, height, radius) {
@@ -65,26 +65,34 @@ gm.prototype.randomLines = function(numberLines, factorX, factorY, inc, color) {
   }
 }
 
-gm.prototype.recursiveLinesX = function(start, lineWidth, startX, spacing, numberLines) {
+gm.prototype.recursiveLinesX = function(start, lineWidth, startX, spacing, numberLines, color, rand) {
   var r, g, b;
   var factor = numberLines * spacing
   for(var x = startX; x <= factor; x += spacing){
-    r = utils.getRandomIntInclusive(0, 255);
-    g = utils.getRandomIntInclusive(0, 255);
-    b = utils.getRandomIntInclusive(0, 255);
-    this.stroke('rgb(' + r + ',' + g + ', 120)', 3);
+    if (rand == true){
+      r = utils.getRandomIntInclusive(0, 255);
+      g = utils.getRandomIntInclusive(0, 255);
+      b = utils.getRandomIntInclusive(0, 255);
+      a = utils.getRandomIntInclusive(0, 255);
+      color.setColor(r, g, b, a);
+    }
+    this.stroke(color.getGmColor(), 3);
     this.drawLine(x, start, x, start + lineWidth);
   }
 }
 
-gm.prototype.recursiveLinesY = function(start, lineWidth, startY, spacing, numberLines) {
+gm.prototype.recursiveLinesY = function(start, lineWidth, startY, spacing, numberLines, color, rand) {
   var r, g, b;
   var factor = numberLines * spacing
   for(var y = startY; y <= factor; y += spacing){
-    r = utils.getRandomIntInclusive(0, 255);
-    g = utils.getRandomIntInclusive(0, 255);
-    b = utils.getRandomIntInclusive(0, 255);
-    this.stroke('rgb(' + r + ',' + g + ', 120)', 3);
+    if (rand == true){
+      r = utils.getRandomIntInclusive(0, 255);
+      g = utils.getRandomIntInclusive(0, 255);
+      b = utils.getRandomIntInclusive(0, 255);
+      a = utils.getRandomIntInclusive(0, 255);
+      color.setColor(r, g, b, a);
+    }
+    this.stroke(color.getGmColor(), 3);
     this.drawLine(start, y, start + lineWidth, y);
   }
 }
