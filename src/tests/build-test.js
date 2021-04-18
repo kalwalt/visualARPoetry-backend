@@ -3,6 +3,7 @@ const gm = require('./../modules/graphics')
 , glitch = require('glitch-canvas')
 , dir = __dirname + '/../imgs'
 , fs = require('fs')
+, Color = require('./../modules/colors')
 
 var seed, quality, amount, iterations;
 seed = 55;
@@ -96,9 +97,20 @@ function recursiveLinesTest(url) {
     })
 }
 
+function testColors() {
+  const colors = new Color(20,20,20)
+  console.log(colors);
+  console.log(colors.getColor());
+  colors.setColor(120, 200, 100)
+  console.log(colors.getColor());
+  const col = Color.setGmColor(20, 30, 120);
+  console.log(col);
+}
+
 
 // simpleTest and saveInc need to be fixed. They partially fails in github actions, see PR https://github.com/kalwalt/visualARPoetry-backend/pull/4
 // simpleTest('/fishes.jpg')
-recursiveLinesTest('/fishes.jpg')
+// recursiveLinesTest('/fishes.jpg')
 // saveInc('/fishes.jpg', glitchParams)
 // simpleGm()
+testColors()
