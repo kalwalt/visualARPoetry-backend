@@ -1,9 +1,25 @@
 class Color {
   constructor(r, g, b, a){
-    this.r = r;
-    this.g = g;
-    this.b = b;
-    this.a = a;
+    if (r >= 0 && r <= 255) {
+      this.r = r;
+    } else {
+      console.error('red value is not in range, should between 0-255')
+    }
+    if (g >= 0 && g <= 255) {
+      this.g = g;
+    } else {
+      console.error('green value is not in range, should between 0-255')
+    }
+    if (b >= 0 && b <= 255) {
+      this.b = b;
+    } else {
+      console.error('blue value is not in range, should between 0-255')
+    }
+    if (a >= 0 && a <= 255) {
+      this.a = a;
+    } else {
+      console.error('alpha value is not in range, should between 0-255')
+    }
   }
 
   getColor() {
@@ -16,10 +32,26 @@ class Color {
   }
 
   setColor(r, g, b, a) {
-    this.r = r;
-    this.g = g;
-    this.b = b;
-    this.a = a;
+    if (r >= 0 && r <= 255) {
+      this.r = r;
+    } else {
+      console.error('red value is not in range, should between 0-255')
+    }
+    if (g >= 0 && g <= 255) {
+      this.g = g;
+    } else {
+      console.error('green value is not in range, should between 0-255')
+    }
+    if (b >= 0 && b <= 255) {
+      this.b = b;
+    } else {
+      console.error('blue value is not in range, should between 0-255')
+    }
+    if (a >= 0 && a <= 255) {
+      this.a = a;
+    } else {
+      console.error('alpha value is not in range, should between 0-255')
+    }
   }
 
   static setGmColor(red, green, blue, alpha) {
