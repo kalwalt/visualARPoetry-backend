@@ -98,12 +98,12 @@ function recursiveLinesTest(url) {
 }
 
 function testColors() {
-  const colors = new Color(20,20,20)
+  const colors = new Color(20,20,20, 120)
   console.log(colors);
   console.log(colors.getColor());
-  colors.setColor(120, 200, 100)
+  colors.setColor(120, 200, 100, 255)
   console.log(colors.getColor());
-  const col = Color.setGmColor(20, 30, 120);
+  const col = Color.setGmColor(20, 30, 120, 255);
   console.log(col);
 }
 
