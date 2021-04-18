@@ -54,6 +54,10 @@ class Color {
     }
   }
 
+  getGmColor() {
+    return 'rgba(' + this.r + ',' + this.g + ',' + this.b + ',' + this.a + ')'
+  }
+
   static setGmColor(red, green, blue, alpha) {
     return 'rgba(' + red + ',' + green + ',' + blue + ',' + alpha + ')'
   }

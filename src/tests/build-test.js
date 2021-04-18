@@ -105,6 +105,9 @@ function testColors() {
   console.log(colors.getColor());
   const col = Color.setGmColor(20, 30, 120, 255);
   console.log(col);
+  const colorsNew = new Color(110, 12, 34, 250);
+  console.log('show new gm color');
+  console.log(colorsNew.getGmColor());
 }
 
 
