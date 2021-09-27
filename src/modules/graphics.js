@@ -65,6 +65,18 @@ gm.prototype.randomLines = function(numberLines, factorX, factorY, inc, color) {
   }
 }
 
+gm.prototype.improvedRandomLines = function(numberLines, factorX, factorY, inc, color, imgW, imgH) {
+  for( var i = 0; i < numberLines; i++) {
+    var rX = utils.getRandomIntInclusive(0, factorX);
+    var rY = utils.getRandomIntInclusive(0, factorY);
+    var offsetX = rX * 5.0;
+    var offsetY = rY * 5.0;
+    color.setColor(rX, rY, 120, 0);
+    this.stroke(color.getGmColor(), 3);
+    this.drawLine(i + rX - numberLines, imgW, i + offsetX, 0);
+  }
+}
+
 gm.prototype.recursiveLinesX = function(start, lineWidth, startX, spacing, numberLines, color, rand) {
   var r, g, b;
   var factor = numberLines * spacing

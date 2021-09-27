@@ -91,10 +91,11 @@ function recursiveLinesTest(url) {
         this.drawRectangles(10, "red", 2, "#ffffffbb", w, h)
         this.recursiveLinesX(20, 320, 20, 10, 200, colorX, true)
         this.recursiveLinesY(20, 320, 20, 10, 200, colorY, false)
-        this.randomLines(120, 220, 220, 400, randColor)
+        //this.randomLines(120, 220, 220, 400, randColor)
+        this.improvedRandomLines(120, 220, 220, 400, randColor, w, h)
         if (!err) console.log('rects ok');
         this.quality(84)
-        this.write(dir + '/rec_lines_test.jpg', function (err) {
+        this.write(dir + '/rec_lines_test_I.jpg', function (err) {
             if (!err) console.log('done');
         });
     })
