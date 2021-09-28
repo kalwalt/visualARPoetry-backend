@@ -8,9 +8,9 @@ gm.prototype.drawRectangles = function(num, strokeColor, strokeSize, fillColor, 
         this.stroke(strokeColor, strokeSize)
         this.fill(fillColor)
         this.drawRect(
-            utils.getRandomIntInclusive(10, width-10), 
-            utils.getRandomIntInclusive(10, height-10), 
-            utils.getRandomIntInclusive(10, width), 
+            utils.getRandomIntInclusive(10, width-10),
+            utils.getRandomIntInclusive(10, height-10),
+            utils.getRandomIntInclusive(10, width),
             utils.getRandomIntInclusive(10, height)
         )
     }
@@ -22,7 +22,7 @@ gm.prototype.drawRect = function(x, y, width, height) {
 }
 
 gm.prototype.drawCircleWithRadius = function(x, y, radius) {
-    this.drawCircle(x, y, x + radius, y + radius);
+  this.drawCircle(x, y, x + radius, y + radius);
 }
 
 gm.prototype.drawCircles = function(numCircles, strokeColor, strokeSize, fillColor, width, height, radius) {
@@ -30,7 +30,7 @@ gm.prototype.drawCircles = function(numCircles, strokeColor, strokeSize, fillCol
         this.stroke(strokeColor, strokeSize)
         this.fill(fillColor)
         this.drawCircleWithRadius(
-            utils.getRandomIntInclusive(10, width-10), 
+            utils.getRandomIntInclusive(10, width-10),
             utils.getRandomIntInclusive(10, height-10),
             utils.getRandomIntInclusive(0, radius)
         )
@@ -51,7 +51,63 @@ gm.prototype.drawPoem = function(width, height, book, fontSizeTitle, strokeTitle
       this.drawText(utils.getRandomIntInclusive(10, width-10), utils.getRandomIntInclusive(10, height-10), book.poems[numPoem].text[i])
     }
     return this;
-}   
+}
+
+gm.prototype.randomLines = function(numberLines, factorX, factorY, inc, color) {
+  for( var i = 0; i < numberLines; i++) {
+    var rX = utils.getRandomIntInclusive(0, factorX);
+    var rY = utils.getRandomIntInclusive(0, factorY);
+    var offsetX = rX * 5.0;
+    var offsetY = rY * 5.0;
+    color.setColor(rX, rY, 120, 0);
+    this.stroke(color.getGmColor(), 3);
+    this.drawLine(i + rX + inc, i + rY + inc, i + offsetX + inc , i + offsetY + inc);
+  }
+}
+
+gm.prototype.improvedRandomLines = function(numberLines, factorX, factorY, inc, color, imgW, imgH) {
+  for( var i = 0; i < numberLines; i++) {
+    var rX = utils.getRandomIntInclusive(0, factorX);
+    var rY = utils.getRandomIntInclusive(0, factorY);
+    var offsetX = rX * 5.0;
+    var offsetY = rY * 5.0;
+    color.setColor(rX, rY, 120, 0);
+    this.stroke(color.getGmColor(), 3);
+    this.drawLine(i + rX - numberLines, imgW, i + offsetX, 0);
+  }
+}
+
+gm.prototype.recursiveLinesX = function(start, lineWidth, startX, spacing, numberLines, color, rand) {
+  var r, g, b;
+  var factor = numberLines * spacing
+  for(var x = startX; x <= factor; x += spacing){
+    if (rand == true){
+      r = utils.getRandomIntInclusive(0, 255);
+      g = utils.getRandomIntInclusive(0, 255);
+      b = utils.getRandomIntInclusive(0, 255);
+      a = utils.getRandomIntInclusive(0, 255);
+      color.setColor(r, g, b, a);
+    }
+    this.stroke(color.getGmColor(), 3);
+    this.drawLine(x, start, x, start + lineWidth);
+  }
+}
+
+gm.prototype.recursiveLinesY = function(start, lineWidth, startY, spacing, numberLines, color, rand) {
+  var r, g, b;
+  var factor = numberLines * spacing
+  for(var y = startY; y <= factor; y += spacing){
+    if (rand == true){
+      r = utils.getRandomIntInclusive(0, 255);
+      g = utils.getRandomIntInclusive(0, 255);
+      b = utils.getRandomIntInclusive(0, 255);
+      a = utils.getRandomIntInclusive(0, 255);
+      color.setColor(r, g, b, a);
+    }
+    this.stroke(color.getGmColor(), 3);
+    this.drawLine(start, y, start + lineWidth, y);
+  }
+}
 
 gm.prototype.addNoisyLines = function(numLines, spacing, width, height, length) {
     var r, g, st = 0;
