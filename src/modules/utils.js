@@ -1,4 +1,4 @@
-const  dateFormat = require("dateformat")
+const dateFormat = require("dateformat")
 , now = new Date();
 
 const getDate = function() {

@@ -1,5 +1,6 @@
 const loadJ = require('../modules/loadJson')
 , utils = require('../modules/utils')
+, Color = require('../modules/colors')
 
 test("test Json id", done => {
     loadJ.readWithCallback(__dirname + '/../poems/poems.json', (obj) => {
@@ -57,5 +58,11 @@ test("test utils getRandomIntInclusive return int number >= 0", done => {
 
 test("test utils convertToInt return int number", done => {
     expect(utils.convertToInt(0.02, 0, 100)).toBe(2);
+    done();
+})
+
+test("test colors return int number", done => {
+    let colors = new Color(120, 120, 120, 255);
+    expect(colors.r).toBe(120);
     done();
 })
