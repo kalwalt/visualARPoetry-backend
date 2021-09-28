@@ -57,6 +57,7 @@ function simpleGm() {
 // testing drawRectangles and the graphics stuff. Used only for testing.
 function simpleTest(url) {
     var w, h;
+    console.log(dir);
     gm(dir + url)
     .size(function(err, val) {
         w = val.width;
@@ -116,8 +117,7 @@ function testColors() {
 
 
 // simpleTest and saveInc need to be fixed. They partially fails in github actions, see PR https://github.com/kalwalt/visualARPoetry-backend/pull/4
-// simpleTest('/fishes.jpg')
-simpleGm()
+simpleTest('/fishes.jpg')
 // recursiveLinesTest('/fishes.jpg')
 // saveInc('/fishes.jpg', glitchParams)
 // simpleGm()
