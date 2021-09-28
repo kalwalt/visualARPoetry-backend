@@ -21,9 +21,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/upload-artifact@v2
-      with:
-        path: src/imgs
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
@@ -34,3 +31,6 @@ jobs:
     - run: npm ci
     - run: npm run build-test --if-present
     - run: npm test
+    - uses: actions/upload-artifact@v2
+      with:
+        path: src/imgs
