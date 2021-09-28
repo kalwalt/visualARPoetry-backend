@@ -116,8 +116,8 @@ function testColors() {
 
 
 // simpleTest and saveInc need to be fixed. They partially fails in github actions, see PR https://github.com/kalwalt/visualARPoetry-backend/pull/4
-// simpleTest('/fishes.jpg')
-recursiveLinesTest('/fishes.jpg')
+simpleTest('/fishes.jpg')
+// recursiveLinesTest('/fishes.jpg')
 // saveInc('/fishes.jpg', glitchParams)
 // simpleGm()
 testColors()
