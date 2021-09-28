@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "dateformat": "^4.5.1",
-    "glitch-canvas": "^1.1.8",
+    "glitch-canvas": "^1.1.9",
     "gm": "^1.23.1",
-    "simplex-noise": "^2.4.0"
+    "simplex-noise": "^3.0.0"
   },
   "devDependencies": {
     "jest": "^26.6.3"
