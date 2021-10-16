@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/upload-artifact@v2
       with:
-        path: src/imgs/fishes.jpg
+        path: src/images
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
