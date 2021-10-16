@@ -33,10 +33,10 @@ jobs:
     - run: npm ci
     - run: npm run build-test --if-present
     - name: Commit changes
-        uses: EndBug/add-and-commit@v7
-        with:
-          author_name: kalwalt
-          author_email: info@kalwaltart.it
-          message: new hello world file ${{ DATE }}
-          add: '.'
+      uses: EndBug/add-and-commit@v7
+      with:
+        author_name: kalwalt
+        author_email: info@kalwaltart.it
+        message: new image from actions
+        add: '.'
     - run: npm test
