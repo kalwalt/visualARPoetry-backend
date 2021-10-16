@@ -59,7 +59,7 @@ function simpleTest(url) {
     var w, h;
     console.log("path is: ", process.cwd());
     var basepath = process.cwd();
-    var combinedpath = basepath + '/src/images';
+    var combinedpath = basepath + '/src/images/';
     console.log("combined path is: ", combinedpath);
     gm(combinedpath + url)
     .size(function(err, val) {
@@ -121,7 +121,7 @@ function testColors() {
 
 
 // simpleTest and saveInc need to be fixed. They partially fails in github actions, see PR https://github.com/kalwalt/visualARPoetry-backend/pull/4
-simpleTest('/fishes.jpg')
+simpleTest('fishes.jpg')
 // recursiveLinesTest('/fishes.jpg')
 // saveInc('/fishes.jpg', glitchParams)
 simpleGm()
