@@ -124,5 +124,5 @@ function testColors() {
 simpleTest('/fishes.jpg')
 // recursiveLinesTest('/fishes.jpg')
 // saveInc('/fishes.jpg', glitchParams)
-// simpleGm()
+simpleGm()
 // testColors()
