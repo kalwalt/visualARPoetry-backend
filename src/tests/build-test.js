@@ -56,7 +56,9 @@ function simpleGm() {
 function simpleTest(url) {
     var w, h;
     console.log("path is: ", process.cwd());
-    gm(dir + url)
+    var basepath = process.cwd();
+    var combinedpath = basepath + '/src/imgs'
+    gm(combinedpath + url)
     .size(function(err, val) {
         w = val.width;
         h = val.height;
