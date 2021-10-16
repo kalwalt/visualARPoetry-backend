@@ -59,9 +59,11 @@ function simpleTest(url) {
     var w, h;
     console.log("path is: ", process.cwd());
     var basepath = process.cwd();
-    var combinedpath = basepath + '/src/images'
+    var combinedpath = basepath + '/src/images';
+    console.log("combined path is: ", combinedpath);
     gm(combinedpath + url)
     .size(function(err, val) {
+        console.log(val);
         w = val.width;
         h = val.height;
         this.fill('green')
