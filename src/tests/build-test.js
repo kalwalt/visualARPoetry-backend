@@ -55,7 +55,7 @@ function simpleGm() {
 // testing drawRectangles and the graphics stuff. Used only for testing.
 function simpleTest(url) {
     var w, h;
-    console.log(process.cwd());
+    console.log("path is: ", process.cwd());
     gm(dir + url)
     .size(function(err, val) {
         w = val.width;
