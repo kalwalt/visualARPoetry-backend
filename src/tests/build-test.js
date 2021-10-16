@@ -60,6 +60,7 @@ function simpleTest(url) {
     var combinedpath = basepath + '/src/images'
     gm(combinedpath + url)
     .size(function(err, val) {
+      console.log(val);
         w = val.width;
         h = val.height;
         this.fill('green')
