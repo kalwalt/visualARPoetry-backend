@@ -28,9 +28,15 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-        lfs: true
     - run: sudo apt-get update
     - run: sudo apt-get install graphicsmagick imagemagick
     - run: npm ci
     - run: npm run build-test --if-present
+    - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: kalwalt
+          author_email: info@kalwaltart.it
+          message: new hello world file ${{ DATE }}
+          add: '.'
     - run: npm test
