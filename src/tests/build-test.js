@@ -63,6 +63,9 @@ function simpleTest(url) {
     console.log("combined path is: ", combinedpath);
     gm(combinedpath + url)
     .size(function(err, val) {
+        if (err) {
+          console.error(err)
+        }
         console.log(val);
         w = val.width;
         h = val.height;
