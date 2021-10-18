@@ -57,8 +57,16 @@ function simpleGm() {
 // testing drawRectangles and the graphics stuff. Used only for testing.
 function simpleTest(url) {
     var w, h;
-    gm(dir + url)
+    console.log("path is: ", process.cwd());
+    var basepath = process.cwd();
+    var combinedpath = basepath + '/src/images/';
+    console.log("combined path is: ", combinedpath);
+    gm(combinedpath + url)
     .size(function(err, val) {
+        if (err) {
+          console.error(err)
+        }
+        console.log(val);
         w = val.width;
         h = val.height;
         this.fill('green')
@@ -69,7 +77,7 @@ function simpleTest(url) {
         this.addNoisyLines(20, 6, w, h, 880)
         if (!err) console.log('rects ok');
         this.quality(84)
-        this.write(dir + '/draw_test.jpg', function (err) {
+        this.write(combinedpath + '/draw_test.jpg', function (err) {
             if (!err) console.log('done');
         });
     })
@@ -116,8 +124,8 @@ function testColors() {
 
 
 // simpleTest and saveInc need to be fixed. They partially fails in github actions, see PR https://github.com/kalwalt/visualARPoetry-backend/pull/4
-// simpleTest('/fishes.jpg')
+simpleTest('fishes.jpg')
 // recursiveLinesTest('/fishes.jpg')
 // saveInc('/fishes.jpg', glitchParams)
-// simpleGm()
-testColors()
+simpleGm()
+// testColors()

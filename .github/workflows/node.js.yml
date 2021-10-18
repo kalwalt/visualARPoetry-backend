@@ -7,7 +7,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, dev ]
 
 jobs:
   build:
@@ -16,11 +16,14 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x, 15.x]
+        node-version: [14.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/upload-artifact@v2
+      with:
+        path: src/images
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
@@ -29,7 +32,10 @@ jobs:
     - run: sudo apt-get install graphicsmagick imagemagick
     - run: npm ci
     - run: npm run build-test --if-present
-    - run: npm test
-    - uses: actions/upload-artifact@v2
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v7
       with:
-        path: src/imgs
+        default_author: github_actions
+        message: new image from action
+        add: 'src/images'
+    - run: npm test
