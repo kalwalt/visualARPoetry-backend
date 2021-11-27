@@ -88,7 +88,11 @@ function recursiveLinesTest(url) {
     var randColor = new Color(120, 120, 120, 120);
     var colorX = new Color(220, 10, 100, 0);
     var colorY = new Color(20, 110, 200, 0);
-    gm(dir+url)
+    console.log("path is: ", process.cwd());
+    var basepath = process.cwd();
+    var combinedpath = basepath + '/src/images/';
+    console.log("combined path is: ", combinedpath);
+    gm(combinedpath + url)
     .size(function(err, val) {
         w = val.width;
         h = val.height;
@@ -100,10 +104,10 @@ function recursiveLinesTest(url) {
         this.recursiveLinesX(20, 320, 20, 10, 200, colorX, true)
         this.recursiveLinesY(20, 320, 20, 10, 200, colorY, false)
         //this.randomLines(120, 220, 220, 400, randColor)
-        this.improvedRandomLines(120, 220, 220, 400, randColor, w, h)
+        this.improvedRandomLines(120, 420, 220, randColor, w, 0)
         if (!err) console.log('rects ok');
         this.quality(84)
-        this.write(dir + '/rec_lines_test_I.jpg', function (err) {
+        this.write(dir + '/rec_lines_test_3.jpg', function (err) {
             if (!err) console.log('done');
         });
     })
@@ -124,8 +128,8 @@ function testColors() {
 
 
 // simpleTest and saveInc need to be fixed. They partially fails in github actions, see PR https://github.com/kalwalt/visualARPoetry-backend/pull/4
-simpleTest('fishes.jpg')
-// recursiveLinesTest('/fishes.jpg')
+//simpleTest('fishes.jpg')
+recursiveLinesTest('fishes.jpg')
 // saveInc('/fishes.jpg', glitchParams)
-simpleGm()
+// simpleGm()
 // testColors()
