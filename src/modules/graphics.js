@@ -65,15 +65,28 @@ gm.prototype.randomLines = function(numberLines, factorX, factorY, inc, color) {
   }
 }
 
-gm.prototype.improvedRandomLines = function(numberLines, factorX, factorY, color, imgW, imgH) {
+gm.prototype.randomPoints = function(numPoints, color, w , h) {
+  for (var i = 0; i < numPoints; i++) {
+    var randX = utils.getRandomIntInclusive(0, w);
+    var randY = utils.getRandomIntInclusive(0, h);
+    color.setColor(randX, randY, 120, 0);
+    this.drawPoint(randX, randY);
+    this.stroke(color.getGmColor(), 4);
+  }
+  return this;
+}
+
+gm.prototype.improvedRandomLines = function(numberLines, factorX, factorY, color, h0, h1) {
   for( var i = 0; i < numberLines; i++) {
     var rX = utils.getRandomIntInclusive(0, factorX);
     var rY = utils.getRandomIntInclusive(0, factorY);
+    var red = utils.getRandomIntInclusive(0, Math.min(factorX, 255));
+    var green = utils.getRandomIntInclusive(0, Math.min(factorY, 255));
     var offsetX = rX * 5.0;
     var offsetY = rY * 5.0;
-    color.setColor(rX, rY, 120, 0);
+    color.setColor(red, green, 120, 0);
     this.stroke(color.getGmColor(), 3);
-    this.drawLine(i + rX - numberLines, imgW, i + offsetX, imgH);
+    this.drawLine(i + rX - numberLines, h0, i + offsetX, h1);
   }
 }
 
