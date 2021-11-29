@@ -54,6 +54,17 @@ function simpleGm() {
     })
 }
 
+function simpleRandomPoints() {
+  var randColor = new Color(120, 120, 120, 120);
+  gm(560, 110, "#00ff55aa")
+  //var randColor = new Color(120, 120, 120, 120);
+  .randomPoints(1200, randColor, 560, 110)
+  .write(dir + '/randpoints.jpg', function(err){
+      if (err) return console.dir(arguments)
+      console.log(this.outname + ' created  :: ' + arguments[3])
+  })
+}
+
 // testing drawRectangles and the graphics stuff. Used only for testing.
 function simpleTest(url) {
     var w, h;
@@ -104,10 +115,11 @@ function recursiveLinesTest(url) {
         this.recursiveLinesX(20, 320, 20, 10, 200, colorX, true)
         this.recursiveLinesY(20, 320, 20, 10, 200, colorY, false)
         //this.randomLines(120, 220, 220, 400, randColor)
-        this.improvedRandomLines(120, 420, 220, randColor, w, 0)
+        this.improvedRandomLines(120, 420, 220, randColor, 0, w)
+        this.randomPoints(1200, randColor, w ,h)
         if (!err) console.log('rects ok');
         this.quality(84)
-        this.write(dir + '/rec_lines_test_3.jpg', function (err) {
+        this.write(dir + '/rec_lines_test_6.jpg', function (err) {
             if (!err) console.log('done');
         });
     })
@@ -132,4 +144,5 @@ function testColors() {
 recursiveLinesTest('fishes.jpg')
 // saveInc('/fishes.jpg', glitchParams)
 // simpleGm()
+simpleRandomPoints()
 // testColors()
