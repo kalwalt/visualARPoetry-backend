@@ -69,9 +69,12 @@ gm.prototype.randomPoints = function(numPoints, color, w , h) {
   for (var i = 0; i < numPoints; i++) {
     var randX = utils.getRandomIntInclusive(0, w);
     var randY = utils.getRandomIntInclusive(0, h);
-    color.setColor(randX, randY, 120, 0);
+    var r = utils.getRandomIntInclusive(0, 255);
+    var g = utils.getRandomIntInclusive(0, 255);
+    var b = utils.getRandomIntInclusive(0, 255);
+    color.setColor(r, g, b, 0);
+    this.fill(color.getGmColor());
     this.drawPoint(randX, randY);
-    this.stroke(color.getGmColor(), 4);
   }
   return this;
 }
@@ -101,7 +104,7 @@ gm.prototype.recursiveLinesX = function(start, lineWidth, startX, spacing, numbe
       a = utils.getRandomIntInclusive(0, 255);
       color.setColor(r, g, b, a);
     }
-    this.stroke(color.getGmColor(), 3);
+    this.stroke(color.getGmColor(), 6);
     this.drawLine(x, start, x, start + lineWidth);
   }
 }

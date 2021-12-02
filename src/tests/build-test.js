@@ -55,11 +55,11 @@ function simpleGm() {
 }
 
 function simpleRandomPoints() {
-  var randColor = new Color(120, 120, 120, 120);
-  gm(560, 110, "#00ff55aa")
+  var randColor = new Color(120, 120, 120, 255);
+  gm(560, 110, "#ffffff")
   //var randColor = new Color(120, 120, 120, 120);
   .randomPoints(1200, randColor, 560, 110)
-  .write(dir + '/randpoints.jpg', function(err){
+  .write(dir + '/randpoints2.jpg', function(err){
       if (err) return console.dir(arguments)
       console.log(this.outname + ' created  :: ' + arguments[3])
   })
