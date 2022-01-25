@@ -112,14 +112,14 @@ function recursiveLinesTest(url) {
         this.drawCircleWithRadius(220, 220, 50)
         this.drawCircles(10, "red", 2, "#ddffbbbb", w, h, 60)
         this.drawRectangles(10, "red", 2, "#ffffffbb", w, h)
-        this.recursiveLinesX(20, 320, 20, 10, 200, colorX, true)
-        this.recursiveLinesY(20, 320, 20, 10, 200, colorY, false)
+        this.recursiveLinesX(utils.getRandomIntInclusive(0, w/2), utils.getRandomIntInclusive(0, w), 220, 10, 200, colorX, true)
+        this.recursiveLinesY(utils.getRandomIntInclusive(0, h/2), utils.getRandomIntInclusive(0, h), 20, 10, 200, colorY, true)
         //this.randomLines(120, 220, 220, 400, randColor)
         this.improvedRandomLines(120, 420, 220, randColor, 0, w)
         this.randomPoints(1200, randColor, w ,h)
         if (!err) console.log('rects ok');
         this.quality(84)
-        this.write(dir + '/rec_lines_test_6.jpg', function (err) {
+        this.write(combinedpath + '/rec_lines_test_6.jpg', function (err) {
             if (!err) console.log('done');
         });
     })
