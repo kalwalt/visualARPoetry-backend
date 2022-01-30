@@ -1,0 +1,3 @@
+draw_test.jpg
+fishes.jpg
+rec_lines_test_6.jpg
