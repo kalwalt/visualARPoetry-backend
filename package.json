@@ -4,7 +4,8 @@
   "scripts": {
     "test": "jest",
     "build": "node src/main.js",
-    "build-test": "node src/tests/build-test.js"
+    "build-test": "node src/tests/build-test.js",
+    "read-files": "node src/tests/read-file-test.js "
   },
   "dependencies": {
     "dateformat": "^4.6.3",
