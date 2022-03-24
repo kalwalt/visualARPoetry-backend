@@ -5,7 +5,8 @@
     "test": "jest",
     "build": "node src/main.js",
     "build-test": "node src/tests/build-test.js",
-    "read-files": "node src/tests/read-file-test.js "
+    "read-files": "node src/tests/read-file-test.js",
+    "read-lines": "node src/tests/read-lines-test.js"
   },
   "dependencies": {
     "dateformat": "^4.6.3",
