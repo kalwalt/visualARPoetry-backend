@@ -1,23 +1,23 @@
 const dateFormat = require("dateformat")
-, now = new Date();
+    , now = new Date();
 
 const fs = require('fs');
 
 const writeStream = fs.createWriteStream('list.txt');
 const pathName = writeStream.path;
 
-const getDate = function() {
+const getDate = function () {
     return dateFormat(now, "isoDateTime");
 }
-  
-  // from https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-const getRandomIntInclusive = function(min, max) {
+
+// from https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+const getRandomIntInclusive = function (min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const convertToInt = function(value, min, max) {
+const convertToInt = function (value, min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(value * (max - min + 1)) + min;
@@ -46,6 +46,11 @@ const saveFileArr = function (folder) {
     })
 }
 
+// from stackoverflow article https://stackoverflow.com/questions/6831918/node-js-read-a-text-file-into-an-array-each-line-an-item-in-the-array
+const readLines = function (filename) {
+    return array = fs.readFileSync(filename, 'utf8').split('\n');
+}
+
 module.exports = {
-    convertToInt, getDate, getRandomIntInclusive, saveFileArr
+    convertToInt, getDate, getRandomIntInclusive, saveFileArr, readLines
 }

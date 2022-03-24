@@ -2,6 +2,7 @@ const gm = require('./../modules/graphics')
 , utils = require('./../modules/utils')
 , glitch = require('glitch-canvas')
 , dir = __dirname + '/../imgs'
+, basepath = process.cwd()
 , fs = require('fs')
 , Color = require('./../modules/colors')
 
@@ -20,8 +21,9 @@ var glitchParams = {
 
 // This function only apply a blur effect and glitch the image. Then the image is saved with a date. Used only for testing.
 function saveInc(url, glitchParams) {
-  gm(dir + url)
-  .resize(220, 220)
+    var combinedpath = basepath + '/src/images/';
+    console.log("combined path is: ", combinedpath);
+  gm(combinedpath + url)
   .blur(10, 6)
   .toBuffer('JPG', function(err, buff) {
     if (err) return console.dir(arguments)
@@ -29,11 +31,11 @@ function saveInc(url, glitchParams) {
     .fromBuffer(buff)
     .toBuffer()
     .then( function( imageBuffer ) {
-      fs.writeFile( dir + '/visual_poetry_' + utils.getDate() + '.jpg', imageBuffer, function ( err ) {
+      fs.writeFile( combinedpath + '/visual_poetry_' + utils.getDate() + '.jpg', imageBuffer, function ( err ) {
         if ( err ) {
           throw err;
         } else {
-          console.log( 'fromBufferToPng complete. File saved to', dir + '/visual_poetry_' + utils.getDate() + '.jpg' );
+          console.log( 'fromBufferToJpg complete. File saved to', combinedpath + 'visual_poetry_' + utils.getDate() + '.jpg' );
         }
     })
   })
@@ -68,8 +70,6 @@ function simpleRandomPoints() {
 // testing drawRectangles and the graphics stuff. Used only for testing.
 function simpleTest(url) {
     var w, h;
-    console.log("path is: ", process.cwd());
-    var basepath = process.cwd();
     var combinedpath = basepath + '/src/images/';
     console.log("combined path is: ", combinedpath);
     gm(combinedpath + url)
@@ -99,8 +99,6 @@ function recursiveLinesTest(url) {
     var randColor = new Color(120, 120, 120, 120);
     var colorX = new Color(220, 10, 100, 0);
     var colorY = new Color(20, 110, 200, 0);
-    console.log("path is: ", process.cwd());
-    var basepath = process.cwd();
     var combinedpath = basepath + '/src/images/';
     console.log("combined path is: ", combinedpath);
     gm(combinedpath + url)
@@ -134,15 +132,15 @@ function testColors() {
   const col = Color.setGmColor(20, 30, 120, 255);
   console.log(col);
   const colorsNew = new Color(110, 12, 34, 250);
-  console.log('show new gm color');
+  console.log('Show new gm color');
   console.log(colorsNew.getGmColor());
 }
 
 
-// simpleTest and saveInc need to be fixed. They partially fails in github actions, see PR https://github.com/kalwalt/visualARPoetry-backend/pull/4
-//simpleTest('fishes.jpg')
+// Some build script for testing
+simpleTest('fishes.jpg')
 recursiveLinesTest('fishes.jpg')
 // saveInc('/fishes.jpg', glitchParams)
 // simpleGm()
-simpleRandomPoints()
+// simpleRandomPoints()
 // testColors()
